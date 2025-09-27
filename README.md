@@ -18,75 +18,87 @@ Size: 535 records (imbalanced classes: 459 non-bankrupt, 76 bankrupt)
 🛠 Methodology
 1. Data Preprocessing
 
-Removed duplicates and irrelevant identifiers (CUSTOMERID).
+	Removed duplicates and irrelevant identifiers (CUSTOMERID).
+	
+	Checked for missing values and handled them.
 
-Checked for missing values and handled them.
-
-Scaled and normalized ratios for model stability.
+	Scaled and normalized ratios for model stability.
 
 2. Train-Test Split
 
-Stratified split: 70% training, 30% testing.
+	Stratified split: 70% training, 30% testing.
 
 3. Multicollinearity Check
 
-Calculated Variance Inflation Factor (VIF) for all ratios.
+	Calculated Variance Inflation Factor (VIF) for all ratios.
 
-Moderate collinearity observed for Ratio3, Ratio9.
+	Moderate collinearity observed for Ratio3, Ratio9.
 
 4. Baseline Logistic Regression
 
-Built initial logistic regression model.
+	Built initial logistic regression model.
 
 Metrics:
 
-Accuracy: 87.6%
+	Accuracy: 87.6%
 
-Recall (Bankrupt): 36.8% → model biased toward non-bankrupt class.
+	Recall (Bankrupt): 36.8% → model biased toward non-bankrupt class.
 
 5. Handling Class Imbalance
 
-Used class_weight='balanced' in logistic regression.
+	Used class_weight='balanced' in logistic regression.
 
-Metrics improved:
+	Metrics improved:
 
-Recall (Bankrupt) → 84% ✅
+	Recall (Bankrupt) → 84% ✅
 
-Precision (Bankrupt) → 49%
+	Precision (Bankrupt) → 49%
 
 Accuracy: 85.2%
 
 6. L1 Regularization (Lasso)
 
-Applied L1 penalty to reduce multicollinearity and highlight key ratios.
+	Applied L1 penalty to reduce multicollinearity and highlight key ratios.
 
-Key features identified: Ratio2, Ratio6, Ratio1 (increase risk) and Ratio10, Ratio3, Ratio7 (protective).
+	Key features identified: Ratio2, Ratio6, Ratio1 (increase risk) and Ratio10, Ratio3, Ratio7 (protective).
 
 Metrics:
 
-Accuracy: 78.1%
+	Accuracy: 78.1%
 
-Recall (Bankrupt) → 79% ✅
+	Recall (Bankrupt) → 79% ✅
 
-Precision (Bankrupt) → 37%
+	Precision (Bankrupt) → 37%
 
 📈 Results & Insights
-Confusion Matrix (L1 + Balanced)
-	Predicted Non-Bankrupt	Predicted Bankrupt
-Actual Non-Bankrupt	359	100
-Actual Bankrupt	16	60
-Key Ratios Driving Bankruptcy
-Ratio	Effect on Bankruptcy	Actionable Insight
-Ratio2	↑ risk	Monitor high values; early intervention.
-Ratio6	↑ risk	Track operational or liquidity signals.
-Ratio1	Slight ↑ risk	Minor contributor; include in risk scoring.
-Ratio10	↓ risk	Indicates stability; benchmark high-performing peers.
-Ratio3	↓ risk	Encourage best practices linked to this ratio.
-Ratio7	↓ risk	Incorporate in early-warning dashboards.
-Interpretation
+Confusion Matrix (L1 + Balanced):
 
-High recall prioritized: catching potential bankruptcies is critical.
+	Actual Non-Bankrupt predicted as Non-Bankrupt: 359 → correctly identified.
 
-Feature selection via L1 improves interpretability → stakeholders can focus on key ratios.
+	Actual Non-Bankrupt predicted as Bankrupt: 100 → false positives.
 
-Actionable insights: Early-warning systems, operational monitoring, and best practice benchmarking.
+	Actual Bankrupt predicted as Non-Bankrupt: 16 → false negatives (missed bankruptcies).
+
+	Actual Bankrupt predicted as Bankrupt: 60 → correctly identified bankrupt firms.
+
+Key Ratios Driving Bankruptcy:
+
+	Ratio2: Increases bankruptcy risk → monitor high values and take early interventions.
+
+	Ratio6: Increases bankruptcy risk → track operational or liquidity signals closely.
+
+	Ratio1: Slightly increases risk → minor contributor; include in risk scoring models.
+
+	Ratio10: Decreases bankruptcy risk → indicates financial stability; benchmark against high-performing peers.
+
+	Ratio3: Decreases bankruptcy risk → encourage best practices linked to this ratio.
+
+	Ratio7: Decreases bankruptcy risk → incorporate into early-warning dashboards for monitoring.
+
+Interpretation:
+
+	High recall prioritized: catching potential bankruptcies is critical.
+
+	Feature selection via L1 improves interpretability → stakeholders can focus on key ratios.
+
+	Actionable insights: Early-warning systems, operational monitoring, and best practice benchmarking.
