@@ -101,4 +101,12 @@ Interpretation:
 
 	Feature selection via L1 improves interpretability → stakeholders can focus on key ratios.
 
-	Actionable insights: Early-warning systems, operational monitoring, and best practice benchmarking.
+Actionable Recommendations:
+
+	Integrate these key ratios into early warning dashboards.
+
+	Prioritize high recall detection: catching potential bankrupt firms early is more critical than occasional false positives.
+
+	Review policies, operational metrics, or financial controls that influence Ratio2 and Ratio6.
+
+	Benchmark best practices from firms with high Ratio10, Ratio3, Ratio7.
