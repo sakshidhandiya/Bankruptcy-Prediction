@@ -5,7 +5,7 @@ Predicting firm bankruptcy using logistic regression with class balancing and L1
 This project applies logistic regression to predict bankruptcy in firms based on financial ratios. The aim is to identify high-risk firms early and provide actionable insights for management, using advanced preprocessing, class balancing, and regularization techniques.
 
 Domain: Financial Risk / Operations
-Techniques: Logistic Regression, L1 Regularization, Class Balancing, VIF Analysis
+Techniques: Logistic Regression, L1 Regularization, Class Balancing, VIF(Variance Inflation Factor) Analysis to detect multicolinearity
 Tools: Python (pandas, scikit-learn, numpy)
 📊 Dataset
 
